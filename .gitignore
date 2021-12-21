@@ -1,0 +1,6 @@
+notes.txt
+test.db
+user_request.json
+routes/__pycache__/*
+models/__pycache__/*
+__pycache__/*
