@@ -11,9 +11,6 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 api = Api(app)
 
-parser = reqparse.RequestParser()
-parser.add_argument('task')
-
 # routes imports precisam de db, ma e api criados
 from routes.User import UserList, UserDetails
 from routes.Recipes import IngredientList, ProductList, RecipeDetails, RecipeDetailsByName
