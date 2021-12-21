@@ -41,7 +41,19 @@ class UserDetails(Resource):
         db.session.commit()
         return {'message': 'user ' + username + ' deleted'}
 
+    def put(self, username):
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            return {'error': 'user not found'}, 404
         
+        args = user_request_parser.parse_args()
+        user.username = args['username']
+        user.email = args['email']
+        user.password = args['password']
+        user.permissions = args['permissions']
+        
+        db.session.commit()
+        return user_schema.dump(user)     
     
 # @app.route('/users')
 # def get_user_list():
